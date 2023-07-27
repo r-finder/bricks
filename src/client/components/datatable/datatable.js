@@ -29,24 +29,35 @@ class DataTable {
       })
       .then((data) => {
         this.data = data;
-        this.updateDataPage();
-        this.updatePager();
+        this.currentPage = 0;
+        this.totalPages = Math.ceil(data.length / this.pageSize);
+        this.update();
       })
       .catch((error) => {
         console.error('Unable to fetch data:', error);
       });
   }
 
-  updateDataPage() {
-    this.dtElement.innerHTML = tmpl({ headers: this.headers, rows: this.data });
+  incPage(inc) {
+    const newPage = this.currentPage + inc;
+    if (newPage < 0 || newPage > this.totalPages) return;
+    this.currentPage = newPage;
+    this.update();
   }
 
-  updatePager() {
+  update() {
+    const start = this.currentPage * this.pageSize;
+    const end = start + this.pageSize;
+    const rows = this.data.slice(start, end);
+    this.dtElement.innerHTML = tmpl({ headers: this.headers, rows: rows });
+
     this.pager.innerHTML = pagerTmpl({
       current: this.currentPage,
       total: this.totalPages,
       size: this.pageSize,
     });
+    this.pager.querySelector('#prev').onclick = () => this.incPage(-1);
+    this.pager.querySelector('#next').onclick = () => this.incPage(+1);
   }
 }
 
