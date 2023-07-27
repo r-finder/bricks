@@ -1,15 +1,15 @@
 {
-  "name": "webpack-pug-express-boilerplate",
+  "name": "bricks",
   "version": "0.0.1",
-  "description": "webpack-pug-express boilerplate template",
+  "description": "lean and easy UI components",
   "repository": {},
   "private": true,
   "license": "ISC",
   "keywords": [],
   "autor": "",
   "type": "module",
-    "scripts": {
-    "start": "bash ./run_dev.sh", 
+  "scripts": {
+    "start": "bash ./run_dev.sh",
     "watch": "webpack watch --mode=development --progress",
     "build": "webpack --mode=production --progress",
     "test": "jest"
@@ -21,9 +21,10 @@
     "packages/*"
   ],
   "dependencies": {
-      "express": "^4.18.2"
-    },
+    "express": "^4.18.2"
+  },
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "css-loader": "^6.8.1",
     "prettier": "^3.0.0",
     "pug-plugin": "^4.9.8",

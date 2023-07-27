@@ -1,13 +1,22 @@
+import { faker } from '@faker-js/faker';
+
 const registerRoutes = (app) => {
   app.get('/getSampleData', (req, res) => {
-    let result = {
-      headers: ['x1', 'x2', 'x3'],
-      rows: [
-        ['x1', 'x2', 'x3'],
-        ['x1', 'x2', 'x3'],
-        ['x1', 'x2', 'x3'],
-      ],
-    };
+    let result = faker.helpers.multiple(
+      () => {
+        return {
+          userId: faker.string.uuid(),
+          username: faker.internet.userName(),
+          email: faker.internet.email(),
+          password: faker.internet.password(),
+          birthdate: faker.date.birthdate(),
+          registeredAt: faker.date.past(),
+        };
+      },
+      {
+        count: 50,
+      }
+    );
     res.send(result);
   });
 };

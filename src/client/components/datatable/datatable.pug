@@ -16,4 +16,4 @@ mixin dataTable(data)
             each row in data.rows
                 +tableRow(row) 
 
-+dataTable(data) 
++dataTable({headers: headers, rows: rows}) 
