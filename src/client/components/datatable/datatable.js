@@ -40,7 +40,7 @@ class DataTable {
 
   incPage(inc) {
     const newPage = this.currentPage + inc;
-    if (newPage < 0 || newPage > this.totalPages) return;
+    if (newPage < 0 || newPage >= this.totalPages) return;
     this.currentPage = newPage;
     this.update();
   }
