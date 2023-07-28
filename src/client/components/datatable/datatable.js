@@ -45,6 +45,10 @@ class DataTable {
     this.update();
   }
 
+  test() {
+    alert('test');
+  }
+
   update() {
     const start = this.currentPage * this.pageSize;
     const end = start + this.pageSize;
@@ -55,9 +59,9 @@ class DataTable {
       current: this.currentPage,
       total: this.totalPages,
       size: this.pageSize,
+      dt: this,
     });
-    this.pager.querySelector('#prev').onclick = () => this.incPage(-1);
-    this.pager.querySelector('#next').onclick = () => this.incPage(+1);
+    this.pager.dt = this;
   }
 }
 
