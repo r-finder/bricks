@@ -54,6 +54,7 @@ class DataTable {
     const end = start + this.pageSize;
     const rows = this.data.slice(start, end);
     this.dtElement.innerHTML = tmpl({ headers: this.headers, rows: rows });
+    this.dtElement.dt = this;
 
     this.pager.innerHTML = pagerTmpl({
       current: this.currentPage,

@@ -1,7 +1,7 @@
 mixin tableHead(data)
   thead 
     each d in data 
-      th=d 
+      th(onclick='this.parentElement.parentElement.parentElement.parentElement.dt.test();')=d 
 
 mixin tableRow(data)
   tr 
