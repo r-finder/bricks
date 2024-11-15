@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>DataTable Demo</title>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .grid table {
+                border-collapse: collapse;
+            }
+
+            .grid th, .grid td {
+                border: 1px solid;
+            }
+
+            .grid th {
+                background-color: bisque;
+                height: 30px;
+            }
+
+            .grid td {
+                background-color: yellow;
+            }
+
+            .grid .sortImage {
+                height: 10px;
+            }
+
+            .grid .sortImage[data-sort="asc"]:before {
+                content: "arrow_downward";
+            }
+
+            .grid .sortImage[data-sort="desc"]:before {
+                content: "arrow_upward";
+            }
+        </style>
+        <script src="./index.js" defer></script>
+    </head>
+
+    <body>
+        <h1>DataTable Demo</h1>
+
+        <div id="grid" class="grid">
+        </div>
+
+    </body>
+</html>

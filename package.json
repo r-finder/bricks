@@ -1,0 +1,36 @@
+{
+  "name": "grid",
+  "version": "0.0.1",
+  "description": "grid",
+  "repository": {},
+  "private": true,
+  "license": "ISC",
+  "keywords": [],
+  "autor": "",
+  "type": "module",
+  "scripts": {
+    "start1": "bash ./run_dev.sh",
+    "start": "webpack serve --mode=development",
+    "watch": "webpack watch --mode=development",
+    "build": "webpack --mode=production --progress",
+    "test": "jest"
+  },
+  "engines": {
+    "node": ">=16.15"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@faker-js/faker": "^9.2.0",
+    "css-loader": "^6.11.0",
+    "html-bundler-webpack-plugin": "^4.4.1",
+    "prettier": "^3.0.0",
+    "sass": "^1.80.6",
+    "sass-loader": "^13.3.3",
+    "webpack": "^5.88.1",
+    "webpack-cli": "5.1.4",
+    "webpack-dev-server": "^4.15.1",
+    "webpack-merge": "^5.9.0"
+  }
+}
