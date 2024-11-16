@@ -87,6 +87,7 @@ export default class Grid {
         const createPagerButton = (text, pageNr) => {
             const button = document.createElement("a");
             button.innerText = text;
+            button.classList.add("pagerButton");
             button.onclick = (e) => {
                 e.preventDefault();
                 if (pageNr < 1 || pageNr > this.totalPages) return;
@@ -98,8 +99,9 @@ export default class Grid {
             return button;
         };
         
-        const span = document.createElement("span");
-        span.innerText = `page ${this.currentPage} of ${this.totalPages}`;
+        const container = document.createElement("span");
+        container.innerText = `page ${this.currentPage} of ${this.totalPages}`;
+        container.classList.add("pagerText");
 
         this.pager.innerHTML = "";
 
@@ -108,7 +110,7 @@ export default class Grid {
             this.pager.appendChild(createPagerButton("<", this.currentPage - 1));
         }
 
-        this.pager.appendChild(span);
+        this.pager.appendChild(container);
 
         if (this.currentPage < this.totalPages) {
             this.pager.appendChild(createPagerButton(">", this.currentPage + 1));

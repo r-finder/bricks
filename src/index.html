@@ -12,6 +12,7 @@
 
             .grid table {
                 border-collapse: collapse;
+                margin-bottom: 5px;
             }
 
             .grid th, .grid td {
@@ -29,14 +30,27 @@
 
             .grid .sortImage {
                 height: 10px;
+                float: right;
+            }
+
+            .grid .pagerButton {
+                background-color: #ab6dcf;
+                border: 1px solid;
+                margin-right: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
+            .grid .pagerText {
+                margin-right: 5px;
             }
 
             .grid .sortImage[data-sort="asc"]:before {
-                content: "arrow_downward";
+                content: "arrow_drop_up";
             }
 
             .grid .sortImage[data-sort="desc"]:before {
-                content: "arrow_upward";
+                content: "arrow_drop_down";
             }
         </style>
         <script src="./index.js" defer></script>
