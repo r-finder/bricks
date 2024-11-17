@@ -1,12 +1,14 @@
 export default class Grid {
     constructor(targetElement) {
         this.targetElement = targetElement;
+        this.data = [];
     }
 
     init() {
-        this.targetElement.innerHTML = "<table><thead></thead><tbody></tbody></table>";
+        this.targetElement.innerHTML = "<table><thead></thead><tbody></tbody></table><div></div>";
         this.thead = this.targetElement.querySelector("thead");
         this.tbody = this.targetElement.querySelector("tbody");
+        this.pager = this.targetElement.querySelector("div");
     }
 
     showColumns(columnNames) {
@@ -48,14 +50,20 @@ export default class Grid {
         this.columns.forEach((c) => this.thead.appendChild(c));
     }
 
-    showData(data) {
-        this.data = data;
+    clearData() {
+        this.data = [];
+        this.renderPager();
+        this.renderPage();
+    }
+
+    addData(data) {
+        data.forEach((d) => this.data.push(d));
 
         this.pageSize = 10;
         this.currentPage = 1;
         this.totalPages = Math.ceil(this.data.length / this.pageSize);
 
-        this.createPager();
+        this.renderPager();
         this.renderPage();
     }
 
@@ -76,13 +84,6 @@ export default class Grid {
         this.tbody.innerHTML = res;
     }
 
-    createPager() {
-        this.pager = document.createElement("div");
-        this.targetElement.insertBefore(this.pager, null);
-
-        this.renderPager();
-    }
-
     renderPager() {       
         const createPagerButton = (text, pageNr) => {
             const button = document.createElement("a");
@@ -99,9 +100,9 @@ export default class Grid {
             return button;
         };
         
-        const container = document.createElement("span");
-        container.innerText = `page ${this.currentPage} of ${this.totalPages}`;
-        container.classList.add("pagerText");
+        const pagerText = document.createElement("span");
+        pagerText.innerText = `page ${this.currentPage} of ${this.totalPages}`;
+        pagerText.classList.add("pagerText");
 
         this.pager.innerHTML = "";
 
@@ -110,7 +111,7 @@ export default class Grid {
             this.pager.appendChild(createPagerButton("<", this.currentPage - 1));
         }
 
-        this.pager.appendChild(container);
+        this.pager.appendChild(pagerText);
 
         if (this.currentPage < this.totalPages) {
             this.pager.appendChild(createPagerButton(">", this.currentPage + 1));
