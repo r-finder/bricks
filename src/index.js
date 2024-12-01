@@ -1,4 +1,5 @@
 import Grid from './grid/grid.js';
+import './style.css';
 
 'use strict';
 {

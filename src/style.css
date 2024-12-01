@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.grid table {
+    border-collapse: collapse;
+    margin-bottom: 5px;
+}
+
+.grid th, .grid td {
+    border: 1px solid;
+}
+
+.grid th {
+    background-color: bisque;
+    height: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.grid th div {
+    display: flex;
+    flex-wrap: nowrap; 
+}
+
+.grid th div span {
+    margin-left: auto;
+}
+
+.grid td {
+    background-color: yellow;
+    padding: 3px;
+}
+
+.grid .sortImage {
+    height: 10px;
+    float: right;
+}
+
+.grid .pagerButton {
+    background-color: red;
+    border: 1px solid;
+    margin-right: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.grid .pagerText {
+    margin-right: 5px;
+}
+
+.grid .sortImage[data-sort="asc"]:before {
+    content: "arrow_drop_up";
+}
+
+.grid .sortImage[data-sort="desc"]:before {
+    content: "arrow_drop_down";
+}

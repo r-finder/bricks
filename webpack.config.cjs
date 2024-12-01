@@ -17,6 +17,7 @@ module.exports = {
       },
       css: {
         filename: 'css/[name].[contenthash:8].css', // CSS output filename
+        hot: true,
       },
     }),
   ],
@@ -38,7 +39,8 @@ module.exports = {
   devServer: {
     static: path.join(__dirname, 'dist'),
     watchFiles: {
-      paths: ['src/**/*.*'],
+      // paths: ['src/**/*.*'],
+      paths: ['src/**/*.html'],
       options: {
         usePolling: true,
       },

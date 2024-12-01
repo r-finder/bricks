@@ -18,7 +18,7 @@ export default class Grid {
             const gridData1 = this.gridData; //same as above
     
             const th = document.createElement("th");
-            th.innerHTML = `<span>${name}</span><span class="sortImage material-icons" data-sort="none"></span>`;
+            th.innerHTML = `<div><span>${name}</span><span class="sortImage material-icons" data-sort="none"></span></div>`;
     
             th.onclick = (e) => { // never use => in event handler, because context. use function() instead
                 const sortImage = e.currentTarget.querySelector("span.sortImage");
@@ -36,7 +36,7 @@ export default class Grid {
                     }
                 });
     
-                self.thead.querySelectorAll("th span.sortImage").forEach((d) => {
+                self.thead.querySelectorAll("th span.sortImage").forEach((d) => { //resolve by id
                     d.dataset.sort = "none"; 
                 });
                 sortImage.dataset.sort = sort;    
@@ -59,7 +59,7 @@ export default class Grid {
     addData(data) {
         data.forEach((d) => this.data.push(d));
 
-        this.pageSize = 10;
+        this.pageSize = 20;  // move this to DOM
         this.currentPage = 1;
         this.totalPages = Math.ceil(this.data.length / this.pageSize);
 
